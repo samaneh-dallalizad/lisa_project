@@ -34,19 +34,14 @@ const days=["sunday","monday","tuesday","wednesday","thursday","friday", "saturd
   if (req.body.queryResult.action === "menu") {
  
     //today menu 
-    if(req.body.queryResult.parameters.requestMuen){
+    if(req.body.queryResult.parameters.requestMenu){
       
       switch(req.body.queryResult.parameters.requestMenu){
         case "today menu":
             Menu.aggregate('dish_name', 'DISTINCT', {where:{day:days[dayIndex]}, plain: false })
-            .then(menus=>{    
-             
-            
-          let result=   menus.map(item=>dishes+=item.DISTINCT+","  )
-              res.send({fulfillmentText:"today menu is :"+result+"............"})    
-                  
-         
-          
+            .then(menus=>{            
+             let result=   menus.map(item=>  item.DISTINCT+","  )
+              res.send({fulfillmentText:"today menu is :"+result+"............"})          
             
             })
 

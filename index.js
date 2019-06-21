@@ -25,11 +25,37 @@ app.post("/menus" , (req,res,next)=>{
   .then(menu=>res.status(201).json(menu))
 })
 
-app.post('/hooks',(req,res,next)=>{
+
+app.post('/hooks',(req,res,next)=>{ 
+
+const dayIndex=new Date().getDay()
+const days=["sunday","monday","tuesday","wednesday","thursday","friday", "saturday"]
+
   if (req.body.queryResult.action === "menu") {
-    res.send({fulfillmentText:"test menu samaneh and drashti"+req.body.queryResult.parameters.date})
-    if(req.body.queryResult.parameters.hasOwnProperty("typeMenu")){
-      res.send({fulfillmentText:"level 2"})
+  
+ 
+    //today menu 
+    if(req.body.queryResult.parameters.requestMenu){
+      
+      switch(req.body.queryResult.parameters.requestMenu){
+        case "today menu":
+            Menu.findAll({
+              where:{day:days[dayIndex]},
+              include: [
+               {model:TypeFood} 
+              ] 
+            })
+            .then(menus=>{
+              res.json({"fulfillmentText":menus})
+            })
+
+        break
+
+      }
+      
+
+    }else{
+      res.send("ddd")
     }
  
    }

@@ -29,7 +29,7 @@ app.post('/hooks',(req,res,next)=>{
   if (req.body.queryResult.action === "menu") {
     res.send({fulfillmentText:"test menu samaneh and drashti"})
     if(req.body.queryResult.parameters.hasOwnProperty("date")){
-      res.json({fulfillmentText:"level 2"})
+      res.send({fulfillmentText:"level 2"})
     }
  
    }

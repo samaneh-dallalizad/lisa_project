@@ -21,7 +21,7 @@ app.post("/menus" , (req,res,next)=>{
 })
 
 app.post('/hooks',(req,res,next)=>{
-  res.json({msg:"I am ready to talk "})
+  res.json({fulfillmentText:"I am ready to talk"})
 })
 
 

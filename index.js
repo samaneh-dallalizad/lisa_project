@@ -7,7 +7,7 @@ const Menu=require("./models/Menu")
 app.use(bodyParser.json())
 
 app.get("/",(res,req)=>{
-  res.send("hello")
+  res.json({msg:"hello world"})
 })
 
 app.post("/typefoods",(req,res,next)=>{

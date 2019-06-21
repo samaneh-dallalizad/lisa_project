@@ -46,7 +46,10 @@ const days=["sunday","monday","tuesday","wednesday","thursday","friday", "saturd
               ] 
             })
             .then(menus=>{
-              res.send({fulfillmentText:"today menu is :"+menus})
+              menus.forEach(function (item) {
+                res.send({fulfillmentText:"today menu is :"+item.dish_name})
+              })
+              
             })
 
         break

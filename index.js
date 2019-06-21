@@ -46,7 +46,7 @@ const days=["sunday","monday","tuesday","wednesday","thursday","friday", "saturd
               ] 
             })
             .then(menus=>{
-              res.json({"fulfillmentText":menus})
+              res.send({fulfillmentText:"today menu is :"+menus})
             })
 
         break

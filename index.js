@@ -27,8 +27,8 @@ app.post("/menus" , (req,res,next)=>{
 
 app.post('/hooks',(req,res,next)=>{
   if (req.body.queryResult.action === "menu") {
-    res.send({fulfillmentText:"test menu samaneh and drashti"})
-    if(req.body.queryResult.parameters.hasOwnProperty("date")){
+    res.send({fulfillmentText:"test menu samaneh and drashti"+req.body.queryResult.parameters})
+    if(req.body.queryResult.parameters.hasOwnProperty("typeMenu")){
       res.send({fulfillmentText:"level 2"})
     }
  

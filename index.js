@@ -39,17 +39,16 @@ const days=["sunday","monday","tuesday","wednesday","thursday","friday", "saturd
       
       switch(req.body.queryResult.parameters.requestMenu){
         case "today menu":
-            Menu.findAll({
-              where:{day:days[dayIndex]},
-              include: [
-               {model:TypeFood} 
-              ] 
-            })
+            Menu.aggregate('dish_name', 'DISTINCT', {where:{day:days[dayIndex]}, plain: false })
             .then(menus=>{
-              menus.forEach(function (item) {
-                res.send({fulfillmentText:"today menu is :"+item.dish_name})
+              let dishes=""
+              console.log(typeof(menus))
+              menus.forEach(function(item){
+                dishes+=item.DISTINCT+","
               })
-              
+              console.log(dishes)
+              res.send({fulfillmentText:"today menu is :"+dishes})
+             
             })
 
         break

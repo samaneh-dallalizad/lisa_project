@@ -47,8 +47,8 @@ const days=["sunday","monday","tuesday","wednesday","thursday","friday", "saturd
                 dishes+=item.DISTINCT+","
               })
               console.log(dishes)
-              res.send("today menu is :"+dishes)
-             
+              res.send({fulfillmentText:"today menu is :"+dishes+"............"})
+            
             })
 
         break

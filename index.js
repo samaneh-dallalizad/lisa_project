@@ -4,11 +4,16 @@ const bodyParser=require("body-parser")
 const port =process.env.PORT||5000
 const TypeFood=require("./models/TypeFood")
 const Menu=require("./models/Menu")
+
 app.use(bodyParser.json())
 
-app.get("/",(res,req)=>{
-  res.json({msg:"hello world"})
-})
+app.get("/",(req,res,next)=>{
+      res.json({
+      msg:"successfully sent",
+      type:"success"      
+    })  
+  
+ })
 
 app.post("/typefoods",(req,res,next)=>{
   TypeFood.create({name:"soup"})

@@ -48,7 +48,7 @@ const days=["sunday","monday","tuesday","wednesday","thursday","friday", "saturd
               //   dishes+=item.DISTINCT+","
               // })    
                   
-            dishees="dishes is"
+            dishes="dishes is"
            res.send({fulfillmentText:"today menu is :"+dishes+"............"})
             
             })

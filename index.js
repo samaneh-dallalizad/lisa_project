@@ -41,14 +41,13 @@ const days=["sunday","monday","tuesday","wednesday","thursday","friday", "saturd
         case "today menu":
             Menu.aggregate('dish_name', 'DISTINCT', {where:{day:days[dayIndex]}, plain: false })
             .then(menus=>{
+
               let dishes="dishes is:"
-              
+              res.send({fulfillmentText:"today menu is :"+dishes+"............"})
               menus.forEach(function(item){
                 dishes+=item.DISTINCT+","
-              })
-
-              res.send({fulfillmentText:"today menu is :"+dishes+"............"})
-              console.log(typeof dishes)
+              })        
+            
              
             
             })

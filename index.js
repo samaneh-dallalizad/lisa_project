@@ -26,7 +26,10 @@ app.post("/menus" , (req,res,next)=>{
 })
 
 app.post('/hooks',(req,res,next)=>{
-  res.json({fulfillmentText:"I am ready to talk"})
+  if (req.body.queryResult.action === "menu") {
+    res.send({fulfillmentText:"test menu samaneh and drashti"})
+ 
+   }
 })
 
 

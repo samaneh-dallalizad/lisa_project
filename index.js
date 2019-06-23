@@ -24,7 +24,10 @@ app.post("/typefoods",(req,res,next)=>{
 })
 
 app.post("/menus" , (req,res,next)=>{
-  Menu.create({dish_name:"dish1",day:"friday",typeFoodId:1})
+  Menu.bulkCreate([
+    {dish_name:"tomato soup",day:"sunday",typeFoodId:1},
+    {dish_name:"onion soup",day:"monday",typeFoodId:1}
+  ])
   .then(menu=>res.status(201).json(menu))
 })
 
@@ -34,8 +37,7 @@ app.post('/hooks',(req,res,next)=>{
 const dayIndex=new Date().getDay()
 const days=["sunday","monday","tuesday","wednesday","thursday","friday", "saturday"]
 
-  if (req.body.queryResult.action === "menu") {
-  
+  if (req.body.queryResult.action === "menu") {  
  
     //today menu 
     if(req.body.queryResult.parameters.requestMenu){
@@ -44,14 +46,12 @@ const days=["sunday","monday","tuesday","wednesday","thursday","friday", "saturd
         case "today menu":
             Menu.aggregate('dish_name', 'DISTINCT', {where:{day:days[dayIndex]}, plain: false })
             .then(menus=>{
-
-              let dishes="dishes is:"
-            
+              let dishes=""            
               menus.forEach(function(item){
                 dishes+=item.DISTINCT+","
               })        
-            
-           res.send({fulfillmentText:"today menu is :"+dishes+"............"})
+                console.log(dishes)
+                res.send({fulfillmentText:"today menu is :"+dishes+"............"})
             
             })
 

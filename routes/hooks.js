@@ -5,30 +5,34 @@ const router=new Router();
 
 router.post('/hooks',(req,res,next)=>{ 
 
-    if (req.body.queryResult.action === "menu") {   
-      
+    console.table(req.body.queryResult)
+    const {action, parameters} = req.body.queryResult
+   
+    
+     if (action === "menu") {  
+     // console.log(+moment(parameters.date))
       //today menu 
-       if(req.body.queryResult.parameters.date){ 
-      
-        //today
-        if(moment(req.body.queryResult.parameters.date).format('MM-DD-YYYY')=== moment().format('MM-DD-YYYY')){         
+       if(parameters.date){      
+
+          if(moment(parameters.date).format('MM-DD-YYYY')=== moment().format('MM-DD-YYYY')){  
+          
             Menu.aggregate('dish_name', 'DISTINCT', {where:{date:moment().format('YYYY-MM-DD')}, plain: false })
                 .then(menus=>{
-                  let dishes=""            
-                  menus.forEach(function(item){
-                    dishes+=item.DISTINCT+","
-                  })        
-                  
-                    res.json({fulfillmentText:"today menu is :"+dishes+"............"})
-                
-             })
+                  console.log(menus)                             
+                    res.send({fulfillmentText:"today menu is :"+ menus.map(menu => menu.DISTINCT).join(', ')
+                    +"............"})               
+         })
           
         }
-         
+       else if(+moment(parameters.date) < +moment()){
+            res.send("others day")
+        }
         
+         
+      
 
        }
-   
+       res.send("oops")
      }
   })
   module.exports=router

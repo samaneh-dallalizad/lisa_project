@@ -2,8 +2,9 @@ const {Router} =require("express")
 const Menu=require("../models/Menu")
 const router=new Router();
 
-router.get("/menus",(req,res,next)=>{
-  const { date } = req.body.date
+router.get("/menus/",(req,res,next)=>{
+  console.log("REQ", req.query.date)
+  const { date } = req.query
   Menu.findAll({
     where: {
       date: date

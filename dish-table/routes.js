@@ -5,10 +5,12 @@ const Type = require("../type-table/model");
 
 // adds a menu dish
 router.post('/dishes', function(req, res, next) {
+  console.log(req.body)
+  const { dishName, typeId } = req.body.dish
   const dish = {
-    name: req.body.name,
-    typeId: req.body.typeId
-  };
+    name: dishName,
+    typeId
+  }
   Dish.create(dish)
     .then(dish => {
       if (!dish) {

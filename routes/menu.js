@@ -2,7 +2,7 @@ const {Router} =require("express")
 const Menu=require("../models/Menu")
 const router=new Router();
 
-router.get("/",(req,res,next)=>{
+router.get("/menus",(req,res,next)=>{
   Menu.findAll().then(menus=>{
     res.json({
       msg:"successfully sent",

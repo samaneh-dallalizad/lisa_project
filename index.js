@@ -6,13 +6,17 @@ const typeRouter = require('./type-table/routes')
 const port =process.env.PORT||5000
 const TypeFood=require("./models/TypeFood")
 const Menu=require("./models/Menu")
+const MenuRouter=require("./routes/menu")
 const cors = require('cors')
+
 
 app
   .use(cors())
   .use(bodyParser.json())
   .use(dishRouter)
   .use(typeRouter)
+  .use(MenuRouter)
+
 
 app.get("/",(req,res,next)=>{
   Menu.findAll().then(menus=>{
@@ -73,6 +77,8 @@ const days=["sunday","monday","tuesday","wednesday","thursday","friday", "saturd
  
    }
 })
+
+
 
 
 

@@ -19,11 +19,13 @@ router.get("/menus/",(req,res,next)=>{
   
  })
 
+
 router.post("/menus" , (req,res,next)=>{
   const { dish } = req.body
   console.log(dish)
   Menu.create(dish)
     .then(menu =>res.status(201).json(menu))
+
 })
 
 module.exports=router

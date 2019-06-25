@@ -3,6 +3,7 @@ const ConnectionString=process.env.DATABASE_URL || 'postgres://postgres:secret@l
 const sequelize=new Sequelize(ConnectionString,{define:{timestamps:false}})
 sequelize.sync(
   // { force: true }
+  // {alter: true}
 )
 .then(()=>{console.log("connect to database")})
 .catch(console.error)

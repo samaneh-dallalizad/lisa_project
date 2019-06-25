@@ -5,19 +5,16 @@ const router=new Router();
 router.get("/menus/",(req,res,next)=>{
   console.log("REQ", req.query.date)
   const { date } = req.query
-  Menu.findAll({
-    where: {
-      date: date
-    }
-  }).then(menus=>{
-    res.json({
-      msg:"successfully sent",
-      type:"success",
-      result:menus      
+  Menu
+    .findAll({
+      where: {
+        date: date
+      }
     })
-  })    
-  
- })
+    .then(menu => {
+      res.json(menu)
+    })     
+  })
 
 router.post("/menus" , (req,res,next)=>{
   const { dish } = req.body

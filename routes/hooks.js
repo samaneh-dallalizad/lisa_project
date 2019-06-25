@@ -11,10 +11,12 @@ router.post('/hooks',(req,res,next)=>{
       // console.log(+moment(parameters.date))
       //today menu 
        if(parameters.date){ 
+        let outputMenu  ="" 
         Menu.aggregate('dish_name', 'DISTINCT', {where:{date:moment().format('YYYY-MM-DD')}, plain: false })
-            .then(menus=>{ 
-                if(menus){
-                  res.send({fulfillmentText:"the menu is :"+menus.map(menu => menu.DISTINCT).join(', ')})
+            .then(menus=>{             
+               outputMenu= menus.map(menu => menu.DISTINCT).join(', ')            
+                if(outputMenu!==""){
+                  res.send({fulfillmentText:"the menu is :"+outputMenu})
                 }else{
 
                   res.send({fulfillmentText:"there is no menu yet"})

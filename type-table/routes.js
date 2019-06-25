@@ -48,6 +48,7 @@ router.post('/types', function(req, res, next) {
           message: `Something went wrong`
         });
       }
+      return res.send(type)
     })
     .catch(err => next(err));
 })

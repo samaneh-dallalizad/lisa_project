@@ -82,10 +82,11 @@ router.get("/dishes/:id", function(req, res, next) {
 router.get("/dishes", function(req, res, next) {
   Dish.findAll({
     where: {
-      type: req.params.typeId
+      typeId: req.query.type
     }
   })
     .then(dishes => {
+      console.log(dishes)
       res.json(dishes);
     })
     .catch(err => next(err));

@@ -15,9 +15,8 @@ router.post('/hooks',(req,res,next)=>{
             .then(menus=>{             
                outputMenu= menus.map(menu => menu.DISTINCT).join(', ')            
                 if(outputMenu!==""){
-                  res.send({fulfillmentText:`Our menu for ${parameters.date} is:`+outputMenu})
+                  res.send({fulfillmentText:`Our menu for ${parameters.date.getDate()} is:`+outputMenu})
                 }else{
-
                   res.send({fulfillmentText:"There is no menu for this day yet"})
                 }                                          
                         

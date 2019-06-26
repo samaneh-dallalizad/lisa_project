@@ -9,14 +9,13 @@ router.post('/hooks',(req,res,next)=>{
     
      if (action === "menu") {  
       //today menu 
-      const day = parameters.date.getDate()
        if(parameters.date){        
         let outputMenu  =""        
         Menu.aggregate('dish_name', 'DISTINCT', {where:{date:moment(parameters.date).format('YYYY-MM-DD')}, plain: false })
             .then(menus=>{             
                outputMenu= menus.map(menu => menu.DISTINCT).join(', ')            
                 if(outputMenu!==""){
-                  res.send({fulfillmentText:`Our menu for ${day} is:`+outputMenu})
+                  res.send({fulfillmentText:`Our menu is:`+outputMenu})
                 }else{
                   res.send({fulfillmentText:"There is no menu for this day yet"})
                 }                                          

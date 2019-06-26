@@ -24,4 +24,23 @@ router.post("/menus" , (req,res,next)=>{
 
 })
 
+router.delete("/menus/:id", (req, res, next) => {
+  const { id } = req.params
+  console.log("REQ PARAMS", req.params)
+  Menu
+    .findByPk(id)
+    .then(menuItem => {
+      if (!menuItem) {
+        return res.status(404).send({
+          message: `Menu item does not exist`
+        })
+      }
+      return menuItem.destroy()
+        .then(() => res.send({
+          message: `Menu item was deleted`
+        }))
+    })
+    .catch(error => next(error))
+})
+
 module.exports=router

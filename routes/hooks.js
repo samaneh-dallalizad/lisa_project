@@ -10,9 +10,9 @@ router.post('/hooks',(req,res,next)=>{
      if (action === "menu") {  
       // console.log(+moment(parameters.date))
       //today menu 
-       if(parameters.date){ 
-        let outputMenu  ="" 
-        Menu.aggregate('dish_name', 'DISTINCT', {where:{date:moment().format('YYYY-MM-DD')}, plain: false })
+       if(parameters.date){        
+        let outputMenu  =""        
+        Menu.aggregate('dish_name', 'DISTINCT', {where:{date:moment(parameters.date).format('YYYY-MM-DD')}, plain: false })
             .then(menus=>{             
                outputMenu= menus.map(menu => menu.DISTINCT).join(', ')            
                 if(outputMenu!==""){

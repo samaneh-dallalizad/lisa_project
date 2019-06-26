@@ -5,6 +5,6 @@ sequelize.sync(
   // { force: true }
   // {alter: true}
 )
-.then(()=>{console.log("connect to database")})
+.then(()=>{console.log("Connected to database")})
 .catch(console.error)
 module.exports=sequelize

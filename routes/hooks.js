@@ -8,7 +8,6 @@ router.post('/hooks',(req,res,next)=>{
     const {action, parameters} = req.body.queryResult  
     
      if (action === "menu") {  
-      // console.log(+moment(parameters.date))
       //today menu 
        if(parameters.date){        
         let outputMenu  =""        
@@ -25,19 +24,6 @@ router.post('/hooks',(req,res,next)=>{
             }).catch(error=>
                console.log(error)
             ) 
-         
-      //   if(moment(parameters.date).format('MM-DD-YYYY')=== moment().format('MM-DD-YYYY')){           
-                     
-      //    }
-      //   else if(+moment(parameters.date) > +moment()){
-      //       console.log(moment(parameters.date).format('MM-DD-YYYY'))
-      //       console.log(moment().format('MM-DD-YYYY'))
-      //       res.send("others day")
-      //   }
-      //   else{
-      //     res.send("oops")
-      //   }
-
         }else{
            res.send("")
         }      

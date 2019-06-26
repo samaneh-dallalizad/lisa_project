@@ -13,7 +13,6 @@ app.post('/hooks',(req,res,next)=>{
                 menus.forEach(function(item){
                   dishes+=item.DISTINCT+","
                 })        
-                  console.log(dishes)
                   res.send({fulfillmentText:"today menu is :"+dishes+"............"})
               
               })

@@ -3,7 +3,6 @@ const Menu=require("../models/Menu")
 const router=new Router();
 
 router.get("/menus/",(req,res,next)=>{
-  console.log("REQ", req.query.date)
   const { date } = req.query
   Menu
     .findAll({
@@ -18,7 +17,6 @@ router.get("/menus/",(req,res,next)=>{
 
 router.post("/menus" , (req,res,next)=>{
   const { dish } = req.body
-  console.log(dish)
   Menu.create(dish)
     .then(menu =>res.status(201).json(menu))
 

@@ -7,7 +7,7 @@ router.post('/hooks',(req,res,next)=>{
     const {action, parameters} = req.body.queryResult 
     let outputMenu  =""      
      if (action === "menu") {  
-       if(parameters.date&&parameters.MenuType){  
+       if(parameters.date!==""&&parameters.MenuType!==""){  
             
                Menu.aggregate('dish_name', 'DISTINCT',{
                 where:{
@@ -28,7 +28,7 @@ router.post('/hooks',(req,res,next)=>{
                   console.log(error)
                )
             
-        }else if(parameters.date){
+        }else if(parameters.date!==""){
          
         
          Menu.aggregate('type_name', 'DISTINCT', {where:{date:moment(parameters.date).format('YYYY-MM-DD')}, plain: false })

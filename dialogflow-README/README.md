@@ -23,7 +23,7 @@ An Entity is a property which can be used by Dialogflow to answer the request fr
 How Dialogflow connects with Backend Api
 
 	- screen shot Dialogflow to back end
-![dialoglow-to-backend.jpg](/dialoglow-to-backend.jpg)
+![dialoglow-to-backend.jpg](./dialoglow-to-backend.jpg)
 
 ## What is a Webhook?
 
@@ -31,8 +31,8 @@ When you are working with custom backend like Node.js with Express, you need to:
 * turn on the option Enable webhook, and
 * call for slot filling in the Fulfillment section of the intent.
 
-![Webhook option.png](/Webhook-option.png)
-![webhook-api.png](/webhook-api.png)
+![Webhook option.png](./Webhook-option.png)
+![webhook-api.png](./webhook-api.png)
 
 ## What is Fulfillment?
 
@@ -40,7 +40,7 @@ Dialogflow receives a request from the user (along with the entity values to be 
 
 In our Project our response form uses API ‘/hooks’ and we deploy our backend on Heroku.
 
-![webhook-fulfimment.png](/webhook-fulfimment.png)
+![webhook-fulfimment.png](./webhook-fulfimment.png)
 
 More Information for Dialogflow: 
 https://dialogflow.com/docs

@@ -1,6 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const Menu=require("../models/Menu")
+const Menu=require("./menu-table/model")
 const {
   dialogflow,
   actionssdk,

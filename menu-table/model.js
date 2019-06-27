@@ -13,11 +13,11 @@ const Menu = sequelize.define('menus', {
   date: {
     type: Sequelize.DATEONLY,
     allowNull: true
-  }, 
-  
+  },
+
 }, {
-  timestamps: false,
-  tableName: 'menus'
-})
+    timestamps: false,
+    tableName: 'menus'
+  })
 
 module.exports = Menu

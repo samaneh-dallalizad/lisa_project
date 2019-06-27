@@ -1,5 +1,5 @@
 const {Router} =require("express")
-const Menu=require("../models/Menu")
+const Menu=require("./menu-table/model")
 const moment =require("moment")
 const router=new Router();
 

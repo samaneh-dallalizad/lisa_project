@@ -36,3 +36,5 @@ All the regular error codes
 
 ## Rate limit
 No limit on number of requests
+
+[Read about Dialogflow, WebHooks and all the wonderful Google Assistance stuff hereL](dialogflow-read-me/readme-dialogflow.md)

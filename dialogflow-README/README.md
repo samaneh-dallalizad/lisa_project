@@ -1,7 +1,7 @@
 ## What is Dialogflow?
 Dialogflow (formerly Api.ai) is a Google-owned developer of human–computer interaction technologies based on natural language conversations. You can develope a virtual buddy for Android, iOS, and Windows Phone smartphones that performs tasks and answers users’ question in a natural language. It also created a natural language processing engine that incorporates conversation context like dialogue history, location and user preferences.
 
-## What is Agent?
+## What is an Agent?
 Agent means it’s your virtual buddy, chatbot or we can say that Project folder. Create New Agent like Menu, Weather, Coffee shop.
 
 ## What is Intent?
@@ -22,7 +22,6 @@ An Entity is a property which can be used by Dialogflow to answer the request fr
 
 How Dialogflow connects with Backend Api
 
-	- screen shot Dialogflow to back end
 ![dialoglow-to-backend.jpg](./dialoglow-to-backend.jpg)
 
 ## What is a Webhook?

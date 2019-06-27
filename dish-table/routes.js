@@ -1,7 +1,8 @@
 const { Router } = require('express');
 const Dish = require('./model')
-const router = new Router();
 const Type = require("../type-table/model");
+
+const router = new Router()
 
 // adds a menu dish
 router.post('/dishes', function(req, res, next) {
@@ -90,7 +91,6 @@ router.get("/dishes", function(req, res, next) {
       res.json(dishes);
     })
     .catch(err => next(err));
-});
-
+})
 
 module.exports = router;

@@ -1,8 +1,9 @@
-const {Router} =require("express")
-const Menu=require("../models/Menu")
-const router=new Router();
+const { Router } = require("express")
+const Menu = require("./model")
+const router = new Router();
 
-router.get("/menus/",(req,res,next)=>{
+//get menus by date
+router.get("/menus", (req, res) => {
   const { date } = req.query
   Menu
     .findAll({
@@ -12,16 +13,17 @@ router.get("/menus/",(req,res,next)=>{
     })
     .then(menu => {
       res.json(menu)
-    })     
-  })
-
-router.post("/menus" , (req,res,next)=>{
-  const { dish } = req.body
-  Menu.create(dish)
-    .then(menu =>res.status(201).json(menu))
-
+    })
 })
 
+//create new menu
+router.post("/menus", (req, res) => {
+  const { dish } = req.body
+  Menu.create(dish)
+    .then(menu => res.status(201).json(menu))
+})
+
+//delete menu by id
 router.delete("/menus/:id", (req, res, next) => {
   const { id } = req.params
   console.log("REQ PARAMS", req.params)
@@ -41,4 +43,4 @@ router.delete("/menus/:id", (req, res, next) => {
     .catch(error => next(error))
 })
 
-module.exports=router
+module.exports = router

@@ -1,30 +1,32 @@
-app.post('/hooks',(req,res,next)=>{ 
-  const dayIndex=new Date().getDay()
-  const days=["sunday","monday","tuesday","wednesday","thursday","friday", "saturday"]
-    if (req.body.queryResult.action === "menu") {   
+const { Router } = require("express")
+const moment = require("moment")
+const Menu = require('./menu-table/model')
+const router = new Router();
+
+//this route connects to the dialog flow
+router.post('/hooks', (req, res) => {
+   const { action, parameters } = req.body.queryResult
+   if (action === "menu") {
       //today menu 
-      if(req.body.queryResult.parameters.requestMenu){
-        
-        switch(req.body.queryResult.parameters.requestMenu){
-          case "today menu":
-              Menu.aggregate('dish_name', 'DISTINCT', {where:{day:days[dayIndex]}, plain: false })
-              .then(menus=>{
-                let dishes=""            
-                menus.forEach(function(item){
-                  dishes+=item.DISTINCT+","
-                })        
-                  res.send({fulfillmentText:"today menu is :"+dishes+"............"})
-              
-              })
-  
-          break
-  
-        }
-        
-  
-      }else{
-        res.send("ddd")
+      if (parameters.date) {
+         let outputMenu = ""
+         Menu.aggregate('dish_name', 'DISTINCT', { where: { date: moment(parameters.date).format('YYYY-MM-DD') }, plain: false })
+            .then(menus => {
+               outputMenu = menus.map(menu => menu.DISTINCT).join(', ')
+               if (outputMenu !== "") {
+                  res.send({ fulfillmentText: `Our menu is:` + outputMenu })
+               } else {
+                  res.send({ fulfillmentText: "There is no menu for this day yet" })
+               }
+            })
+            .catch(error =>
+               console.log(error)
+            )
       }
-   
-     }
-  })
+      else {
+         res.send("")
+      }
+   }
+})
+
+module.exports = router

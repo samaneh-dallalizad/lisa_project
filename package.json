@@ -13,9 +13,11 @@
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "jest": "^24.8.0",
     "moment": "^2.24.0",
     "pg": "^7.11.0",
-    "sequelize": "^5.8.11"
+    "sequelize": "^5.8.11",
+    "supertest": "^4.0.2"
   },
   "repository": {
     "type": "git",

@@ -7,7 +7,7 @@ const router = new Router()
 // adds a menu dish
 router.post('/dishes', function(req, res, next) {
   console.log(req.body)
-  const { dishName, typeId } = req.body.newDish
+  const { dishName, typeId } = req.body.dish
   const dish = {
     name: dishName,
     typeId

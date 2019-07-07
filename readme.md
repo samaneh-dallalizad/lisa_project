@@ -26,7 +26,7 @@ Then:
 * npm install 
 * npm run start
 
-To connect to the Database on a Mac you can use [Postico](https://eggerapps.at/postico/), or in Linux - [DBeaver](https://dbeaver.io/)
+To connect to the Database on a Mac you can use [Postico](https://eggerapps.at/postico/), on Linux - [DBeaver](https://dbeaver.io/)
 
 ## Authentication
 There is no authentication on this API - all functions available to all users.

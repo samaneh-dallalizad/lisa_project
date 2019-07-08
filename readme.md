@@ -31,7 +31,7 @@ To connect to the Database on a Mac you can use [Postico](https://eggerapps.at/p
 ## Authentication
 There is no authentication on this API - all functions available to all users.
 
-##Routes
+## Routes
 
 Here is how you might retrieve a menu for a date with a GET request.
 

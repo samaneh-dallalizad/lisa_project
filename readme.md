@@ -23,6 +23,7 @@ $ docker run \
 
 Then:
 * git clone 
+* npm install
 * node .
 
 To connect to the Database on a Mac you can use [Postico](https://eggerapps.at/postico/), on Linux - [DBeaver](https://dbeaver.io/)
